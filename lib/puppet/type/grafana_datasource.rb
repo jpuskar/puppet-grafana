@@ -79,6 +79,20 @@ Puppet::Type.newtype(:grafana_datasource) do
     defaultto :false
   end
 
+  newproperty(:basic_auth) do
+    desc "Whether the datasource requires basic authentication."
+    newvalues(:true, :false)
+    defaultto :false
+  end
+
+  newproperty(:basic_auth_password) do
+    desc "The password for the datasource when using basic auth (optional)"
+  end
+
+  newproperty(:basic_auth_user) do
+    desc "The username for the datasource (optional)"
+  end
+
   newproperty(:json_data) do
     desc 'Additional JSON data to configure the datasource (optional)'
 
