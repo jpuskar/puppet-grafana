@@ -1,12 +1,12 @@
 {
-  "name": "puppet-grafana",
+  "name": "jpuskar-grafana",
   "version": "3.0.0",
   "author": "Vox Pupuli",
   "summary": "This module provides Grafana, a dashboard and graph editor for Graphite and InfluxDB.",
   "license": "Apache-2.0",
-  "source": "https://github.com/voxpupuli/puppet-grafana.git",
-  "project_page": "https://github.com/voxpupuli/puppet-grafana",
-  "issue_url": "https://github.com/voxpupuli/puppet-grafana/issues",
+  "source": "https://github.com/jpuskar/puppet-grafana.git",
+  "project_page": "https://github.com/jpuskar/puppet-grafana",
+  "issue_url": "https://github.com/jpuskar/puppet-grafana/issues",
   "dependencies": [
     {
       "name": "garethr/docker",
