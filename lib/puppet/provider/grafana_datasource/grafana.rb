@@ -130,6 +130,33 @@ Puppet::Type.type(:grafana_datasource).provide(:grafana, parent: Puppet::Provide
   end
   # rubocop:enable Style/PredicateName
 
+  def basic_auth
+    self.datasource[:basic_auth]
+  end
+
+  def basic_auth=(value)
+    resource[:basic_auth] = value
+    self.save_datasource()
+  end
+
+  def basic_auth_user
+    self.datasource[:basic_auth_user]
+  end
+
+  def basic_auth_user=(value)
+    resource[:basic_auth_user] = value
+    self.save_datasource()
+  end
+
+  def basic_auth_password
+    self.datasource[:basic_auth_password]
+  end
+
+  def basic_auth_password=(value)
+    resource[:basic_auth_password] = value
+    self.save_datasource()
+  end
+
   def json_data
     datasource[:json_data]
   end
@@ -151,6 +178,12 @@ Puppet::Type.type(:grafana_datasource).provide(:grafana, parent: Puppet::Provide
       isDefault: (resource[:is_default] == :true),
       jsonData: resource[:json_data]
     }
+
+    if data[:type].to_s == 'elasticsearch'
+      data[:basicAuth] = (resource[:basic_auth] == :true)
+      data[:basicAuthUser] = resource[:basic_auth_user]
+      data[:basicAuthPassword] = resource[:basic_auth_password]
+    end
 
     if datasource.nil?
       response = send_request('POST', '/api/datasources', data)
